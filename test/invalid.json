@@ -1,0 +1,15 @@
+{
+  "test": {
+    "hello": "world",
+    "this is a test": "oh really?",
+    "foo": {
+      "bar": "true",
+      "ext": [
+        "1",
+        "2"
+        "3",
+      ],
+      "final": "destination"
+    }
+  }
+}

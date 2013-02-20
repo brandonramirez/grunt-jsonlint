@@ -1,0 +1,24 @@
+{
+  "name": "grunt-jsonlint",
+  "version": "0.0.1",
+  "description": "Validate JSON files from grunt.",
+  "main": "tasks/jsonlint.js",
+  "scripts": {
+    "test": "grunt jshint jsonlint"
+  },
+  "repository": "https://github.com/brandonramirez/grunt-jsonlint",
+  "keywords": [
+    "gruntplugin",
+    "build",
+    "validate"
+  ],
+  "author": "Brandon Ramirez",
+  "license": "MIT",
+  "dependencies": {
+    "jsonlint": "1.5.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.1"
+  }
+}
