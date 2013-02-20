@@ -3,9 +3,11 @@ grunt-jsonlint
 
 Validate JSON files from grunt.
 
+Requires grunt 0.4
+
 # Install
 
-    npm install grunt-jsonlint
+    npm install grunt-jsonlint --save-dev
 
 # Configure
 
