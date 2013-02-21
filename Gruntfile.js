@@ -8,6 +8,9 @@ module.exports = function(grunt) {
       gruntfile: {
         src: [ 'Gruntfile.js' ]
       },
+      packageJson: {
+        src: [ 'package.json' ]
+      },
       tasks: {
         src: [ 'tasks/*.js' ],
         options: {

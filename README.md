@@ -32,3 +32,7 @@ Each of these would be valuable in grunt.
 
 * Schema validation
 * Sort file by key
+
+# Release History
+
+* 2013-02-20   v1.0.0   First official release
