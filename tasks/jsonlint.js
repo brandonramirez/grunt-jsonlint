@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 
           try {
             jsonlint.parse(grunt.file.read(file));
-            grunt.log.writeln('File "' + file + '" is valid JSON.');
+            grunt.verbose.ok('File "' + file + '" is valid JSON.');
           }
           catch (e) {
             grunt.log.error('File "' + file + '" failed JSON validation.');
