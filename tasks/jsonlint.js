@@ -13,6 +13,7 @@ module.exports = function (grunt) {
 
   grunt.registerMultiTask("jsonlint", "Validate JSON files.", function () {
     if (this.files != null) {
+      var failed = 0;
       this.files.forEach(function (mapping) {
         mapping.src.forEach(function (file) {
           grunt.log.debug('Validating "' + file + '"...');
@@ -22,11 +23,14 @@ module.exports = function (grunt) {
             grunt.verbose.ok('File "' + file + '" is valid JSON.');
           }
           catch (e) {
+            failed++;
             grunt.log.error('File "' + file + '" failed JSON validation.');
             grunt.fail.warn(e);
           }
         });
       });
+      var successful = this.files.length - failed;
+      grunt.log.ok(successful + ' file' + (successful === 1 ? '' : 's') + ' lint free.');
     }
   });
 };
