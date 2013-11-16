@@ -38,3 +38,4 @@ Each of these would be valuable in grunt.
 * 2013-02-20   v1.0.0   First official release
 * 2013-09-19   v1.0.1   Do not log every validated file
 * 2013-10-31   v1.0.2   Add output of count of successfully linted JSON file for issue
+* 2013-11-16   v1.0.3   Fix output of count of successfully linted JSON files.
