@@ -15,7 +15,6 @@ module.exports = function(grunt) {
         src: [ 'tasks/*.js' ],
         options: {
           eqnull: true,
-          es5: true,
           curly: true,
           newcap: true,
           unused: true,
