@@ -25,6 +25,8 @@ Add the following to load the task into your Gruntfile:
 
 An error will be thrown if the JSON file contains syntax errors.
 
+Here's a simple [tutorial](http://grunt-tasks.com/grunt-jsonlint/ "grunt") on how to use grunt-jsonlint
+
 # Roadmap
 
 The underlying jsonlint library has many features not yet exposed.
