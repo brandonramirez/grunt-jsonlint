@@ -1,4 +1,4 @@
-grunt-jsonlint
+grunt-jsonlint [![Build Status](https://travis-ci.org/brandonramirez/grunt-jsonlint.svg)](https://travis-ci.org/brandonramirez/grunt-jsonlint)
 ==============
 
 Validate JSON files from grunt.
