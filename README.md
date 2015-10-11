@@ -42,3 +42,4 @@ Each of these would be valuable in grunt.
 * 2013-10-31   v1.0.2   Add output of count of successfully linted JSON file for issue
 * 2013-11-16   v1.0.3   Fix output of count of successfully linted JSON files.
 * 2013-11-18   v1.0.4   Updated for latest dependencies.
+* 2015-10-11   v1.0.5   Updated for latest dependencies.
