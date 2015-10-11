@@ -29,6 +29,9 @@ module.exports = function(grunt) {
     jsonlint: {
       sample: {
         src: [ 'test/valid.json' ]
+      },
+      packageJson: {
+        src: [ 'package.json' ]
       }
     }
   });
