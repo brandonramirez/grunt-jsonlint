@@ -35,11 +35,26 @@ Each of these would be valuable in grunt.
 * Schema validation
 * Sort file by key
 
+# Running tests
+
+Unit tests are provided for automated regression testing.  The easiest way
+to run them is with
+
+    $ npm install
+    $ npm test
+
+Alternatively, if you have `grunt-cli` installed, you could use grunt directly with
+
+    $ npm install
+    $ grunt test
+
+Which does the same thing.
+
 # Release History
 
-* 2013-02-20   v1.0.0   First official release
-* 2013-09-19   v1.0.1   Do not log every validated file
-* 2013-10-31   v1.0.2   Add output of count of successfully linted JSON file for issue
-* 2013-11-16   v1.0.3   Fix output of count of successfully linted JSON files.
-* 2013-11-18   v1.0.4   Updated for latest dependencies.
-* 2015-10-11   v1.0.5   Updated for latest dependencies.
+* 2013-02-20   v1.0.0	First official release
+* 2013-09-19   v1.0.1	Do not log every validated file
+* 2013-10-31   v1.0.2	Add output of count of successfully linted JSON file for issue
+* 2013-11-16   v1.0.3	Fix output of count of successfully linted JSON files.
+* 2013-11-18   v1.0.4	Updated for latest dependencies.
+* 2015-10-11   v1.0.5	Updated for latest dependencies.
