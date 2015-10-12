@@ -23,6 +23,14 @@ module.exports = function(grunt) {
 
           node: true
         }
+      },
+      tests: {
+        src: [ 'test/**/*.js' ],
+        options: {
+          eqnull: true,
+          indent: 2,
+          node: true
+        }
       }
     },
 
@@ -33,14 +41,26 @@ module.exports = function(grunt) {
       packageJson: {
         src: [ 'package.json' ]
       }
+    },
+
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: [ 'test/**/*.js' ]
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
   require('./tasks/jsonlint')(grunt);
 
+  grunt.registerTask('test', [ 'jshint', 'jsonlint', 'mochaTest' ]);
+
   // Default task(s).
-  grunt.registerTask('default', [ 'jshint', 'jsonlint' ]);
+  grunt.registerTask('default', [ 'test' ]);
 
 };

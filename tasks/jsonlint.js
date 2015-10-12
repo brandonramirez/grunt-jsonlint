@@ -10,25 +10,7 @@ module.exports = function (grunt) {
   "use strict";
 
   var jsonlint = require('jsonlint');
+  var gruntJsonLintTask = require('../lib/grunt-jsonlint-task');
 
-  grunt.registerMultiTask("jsonlint", "Validate JSON files.", function () {
-    if (this.filesSrc != null) {
-      var failed = 0;
-      this.filesSrc.forEach(function (file) {
-        grunt.log.debug('Validating "' + file + '"...');
-
-        try {
-          jsonlint.parse(grunt.file.read(file));
-          grunt.verbose.ok('File "' + file + '" is valid JSON.');
-        }
-        catch (e) {
-          failed++;
-          grunt.log.error('File "' + file + '" failed JSON validation.');
-          grunt.fail.warn(e);
-        }
-      });
-      var successful = this.filesSrc.length - failed;
-      grunt.log.ok(successful + ' file' + (successful === 1 ? '' : 's') + ' lint free.');
-    }
-  });
+  grunt.registerMultiTask("jsonlint", "Validate JSON files.", gruntJsonLintTask(grunt, jsonlint));
 };
