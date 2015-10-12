@@ -6,7 +6,6 @@ var sinon = require('sinon');
 
 expect = require('sinon-expect').enhance(expect, sinon, 'was');
 
-var jsonlintTask = require('../tasks/jsonlint.js');
 var taskFactory = require('../lib/grunt-jsonlint-task');
 
 describe('grunt-jsonlint task', function () {
