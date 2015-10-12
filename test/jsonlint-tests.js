@@ -4,6 +4,8 @@ var jsonlint = require('jsonlint');
 var expect = require('expect.js');
 var sinon = require('sinon');
 
+expect = require('sinon-expect').enhance(expect, sinon, 'was');
+
 var jsonlintTask = require('../tasks/jsonlint.js');
 var taskFactory = require('../lib/grunt-jsonlint-task');
 
@@ -41,7 +43,7 @@ describe('grunt-jsonlint task', function () {
 
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
 
-    expect(grunt.fail.warn.callCount).to.be(1);
+    expect(grunt.fail.warn).was.calledOnce();
   });
 
   it('reports the number of files which validated successfully', function () {
@@ -125,11 +127,12 @@ function runWithFiles(grunt, jsonlint, files) {
 }
 
 function expectSuccess(gruntSpy) {
-  expect(gruntSpy.fail.warn.called).to.be(false);
-  expect(gruntSpy.log.ok.firstCall.args).to.contain('1 file lint free.');
+  expect(gruntSpy.fail.warn).was.notCalled();
+  expect(gruntSpy.log.ok).was.calledOnce();
+  expect(gruntSpy.log.ok).was.calledWith('1 file lint free.');
 }
 
 function expectFailure(grunt) {
-  expect(grunt.log.error.callCount).to.be(1);
-  expect(grunt.log.error.calledWith('File "test/invalid.json" failed JSON validation.')).to.be(true);
+  expect(grunt.log.error).was.calledOnce();
+  expect(grunt.log.error).was.calledWith('File "test/invalid.json" failed JSON validation.');
 }
