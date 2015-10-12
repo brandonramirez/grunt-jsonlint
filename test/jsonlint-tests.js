@@ -11,18 +11,32 @@ var taskFactory = require('../lib/grunt-jsonlint-task');
 
 describe('grunt-jsonlint task', function () {
 
+  before('stub out and spy on grunt logger', function () {
+    sinon.stub(grunt.log, 'ok');
+    sinon.stub(grunt.log, 'error');
+    sinon.stub(grunt.fail, 'warn');
+  });
+
+  after('restore grung logger methods', function () {
+    grunt.log.ok.restore();
+    grunt.log.error.restore();
+    grunt.fail.warn.restore();
+  });
+
+  afterEach('reset the spy counts', function () {
+    grunt.log.ok.reset();
+    grunt.log.error.reset();
+    grunt.fail.warn.reset();
+  });
+
   // basic pass/fail behaviors
 
   it('passes a valid JSON file', function () {
-    var grunt = createGruntSpy();
-
     runWithFiles(grunt, jsonlint, [ 'test/valid.json' ]);
     expectSuccess(grunt);
   });
 
   it('fails an invalid JSON file', function () {
-    var grunt = createGruntSpy();
-
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
     expectFailure(grunt);
   });
@@ -30,7 +44,6 @@ describe('grunt-jsonlint task', function () {
   // reporting behaviors
 
   it('reports a failure for each files which failed to validate', function () {
-    var grunt = createGruntSpy();
     var jsonlint = createFailingJsonlintSpy();
 
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
@@ -38,7 +51,6 @@ describe('grunt-jsonlint task', function () {
   });
 
   it('fails the build when a JSON file fails to validate', function () {
-    var grunt = createGruntSpy();
     var jsonlint = createFailingJsonlintSpy();
 
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
@@ -47,7 +59,6 @@ describe('grunt-jsonlint task', function () {
   });
 
   it('reports the number of files which validated successfully', function () {
-    var grunt = createGruntSpy();
     var jsonlint = createPassingJsonlintSpy();
 
     runWithFiles(grunt, jsonlint, [ 'test/valid.json' ]);
@@ -56,26 +67,6 @@ describe('grunt-jsonlint task', function () {
   });
 
 });
-
-function createGruntSpy() {
-  return {
-    log: {
-      ok: sinon.spy(),
-      debug: sinon.spy(),
-      error: sinon.spy()
-    },
-    fail: {
-      warn: sinon.spy(),
-      fatal: sinon.spy()
-    },
-    verbose: {
-      ok: sinon.spy()
-    },
-    file: {
-      read: grunt.file.read
-    }
-  };
-}
 
 function createPassingJsonlintSpy() {
   return {
