@@ -1,6 +1,6 @@
 var grunt = require('grunt');
 var jsonlint = require('jsonlint');
-var strip = require('strip-comments');
+var strip = require('strip-json-comments');
 var _ = require('lodash');
 
 var expect = require('expect.js');

@@ -9,7 +9,7 @@
 module.exports = function (grunt) {
   "use strict";
 
-  var strip = require('strip-comments');
+  var strip = require('strip-json-comments');
   var jsonlint = require('jsonlint');
   var gruntJsonLintTask = require('../lib/grunt-jsonlint-task');
 
