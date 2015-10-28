@@ -9,8 +9,9 @@
 module.exports = function (grunt) {
   "use strict";
 
+  var strip = require('strip-json-comments');
   var jsonlint = require('jsonlint');
   var gruntJsonLintTask = require('../lib/grunt-jsonlint-task');
 
-  grunt.registerMultiTask("jsonlint", "Validate JSON files.", gruntJsonLintTask(grunt, jsonlint));
+  grunt.registerMultiTask("jsonlint", "Validate JSON files.", gruntJsonLintTask(grunt, jsonlint, strip));
 };

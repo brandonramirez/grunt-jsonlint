@@ -16,7 +16,8 @@
   "author": "Brandon Ramirez <brandon.s.ramirez@gmail.com> (http://www.brandonsramirez.com/)",
   "license": "MIT",
   "dependencies": {
-    "jsonlint": "1.6.2"
+    "jsonlint": "1.6.2",
+    "strip-json-comments": "^1.0.4"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
@@ -26,6 +27,7 @@
     "grunt-mocha-test": "^0.12.7",
     "mocha": "^2.3.3",
     "sinon": "^1.17.1",
-    "sinon-expect": "^0.2.0"
+    "sinon-expect": "^0.2.0",
+    "lodash": "^3.10.1"
   }
 }

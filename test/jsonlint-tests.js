@@ -1,5 +1,7 @@
 var grunt = require('grunt');
 var jsonlint = require('jsonlint');
+var strip = require('strip-json-comments');
+var _ = require('lodash');
 
 var expect = require('expect.js');
 var sinon = require('sinon');
@@ -38,6 +40,11 @@ describe('grunt-jsonlint task', function () {
   it('fails an invalid JSON file', function () {
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
     expectFailure(grunt);
+  });
+
+  it('passes a valid CJSON file', function () {
+    runWithFiles(grunt, jsonlint, [ 'test/cjson.json' ], { cjson: true });
+    expectSuccess(grunt);
   });
 
   // reporting behaviors
@@ -91,6 +98,12 @@ function createTaskContext(data) {
     return prev.concat(curr);
   }, []);
 
+  var optionsFunc = function optionsFunc(options) {
+    return function(defaultOptions) {
+      return _.extend(defaultOptions, options);
+    };
+  }(data.options);
+
   return {
     target: target,
     files: normalizedFiles,
@@ -100,19 +113,21 @@ function createTaskContext(data) {
     flags: {},
     nameArgs: '',
     args: [],
-    name: 'jsonlint'
+    name: 'jsonlint',
+    options: optionsFunc
   };
 }
 
-function runWithFiles(grunt, jsonlint, files) {
+function runWithFiles(grunt, jsonlint, files, options) {
   var gruntFiles = files.map(function (file) {
     return {
       src: file
     };
   });
 
-  taskFactory(grunt, jsonlint).bind(createTaskContext({
-    files: gruntFiles
+  taskFactory(grunt, jsonlint, strip).bind(createTaskContext({
+    files: gruntFiles,
+    options: options
   }))();
 }
 
