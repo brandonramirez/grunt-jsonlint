@@ -43,7 +43,7 @@ describe('grunt-jsonlint task', function () {
   });
 
   it('passes a valid CJSON file', function () {
-    runWithFiles(grunt, jsonlint, [ 'test/cjson.json' ], { strip: true });
+    runWithFiles(grunt, jsonlint, [ 'test/cjson.json' ], { cjson: true });
     expectSuccess(grunt);
   });
 

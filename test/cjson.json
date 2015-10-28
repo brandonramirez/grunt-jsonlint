@@ -1,0 +1,7 @@
+/**
+ * Testing CJSON
+ */
+{
+	// This should be a valid file.
+	"valid": true
+}
