@@ -16,7 +16,8 @@
   "author": "Brandon Ramirez <brandon.s.ramirez@gmail.com> (http://www.brandonsramirez.com/)",
   "license": "MIT",
   "dependencies": {
-    "jsonlint": "1.6.2"
+    "jsonlint": "1.6.2",
+    "strip-comments": "^0.3.4"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
