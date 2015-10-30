@@ -58,3 +58,4 @@ Which does the same thing.
 * 2013-11-16   v1.0.3	Fix output of count of successfully linted JSON files.
 * 2013-11-18   v1.0.4	Updated for latest dependencies.
 * 2015-10-11   v1.0.5	Updated for latest dependencies.
+* 2015-10-29   v1.0.6	CJSON support thanks to @fredghosn, unit tests
