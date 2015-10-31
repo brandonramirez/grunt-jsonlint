@@ -40,15 +40,21 @@ module.exports = function(grunt) {
       },
       packageJson: {
         src: [ 'package.json' ]
+      },
+      overflowTest: {
+        src: [ 'test/issue13/**/*.json' ]
       }
     },
 
     mochaTest: {
-      test: {
-        options: {
-          reporter: 'spec'
-        },
-        src: [ 'test/**/*.js' ]
+      options: {
+        reporter: 'spec'
+      },
+      unitTests: {
+        src: [ 'test/unit-tests.js' ]
+      },
+      issue13Tests: {
+        src: [ 'test/issue13-tests.js' ]
       }
     }
   });
@@ -58,7 +64,7 @@ module.exports = function(grunt) {
 
   require('./tasks/jsonlint')(grunt);
 
-  grunt.registerTask('test', [ 'jshint', 'jsonlint', 'mochaTest' ]);
+  grunt.registerTask('test', [ 'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'mochaTest' ]);
 
   // Default task(s).
   grunt.registerTask('default', [ 'test' ]);

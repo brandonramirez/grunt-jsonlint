@@ -5,7 +5,6 @@ var _ = require('lodash');
 
 var expect = require('expect.js');
 var sinon = require('sinon');
-
 expect = require('sinon-expect').enhance(expect, sinon, 'was');
 
 var taskFactory = require('../lib/grunt-jsonlint-task');
@@ -141,3 +140,4 @@ function expectFailure(grunt) {
   expect(grunt.log.error).was.calledOnce();
   expect(grunt.log.error).was.calledWith('File "test/invalid.json" failed JSON validation.');
 }
+

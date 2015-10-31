@@ -2,3 +2,4 @@ node_modules/
 npm-debug.log
 *.gz
 *.tgz
+test/issue13/
