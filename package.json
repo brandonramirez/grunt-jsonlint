@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "jsonlint": "1.6.2",
-    "strip-json-comments": "^1.0.4"
+    "strip-json-comments": "^2.0.0"
   },
   "devDependencies": {
     "async": "^1.5.0",
@@ -32,9 +32,9 @@
     "grunt-mocha-test": "^0.12.7",
     "lodash": "^3.10.1",
     "mkdirp-promise": "^1.0.3",
-    "mocha": "^2.3.3",
+    "mocha": "^2.3.4",
     "promise": "^7.0.4",
-    "sinon": "^1.17.1",
+    "sinon": "^1.17.2",
     "sinon-expect": "^0.2.0"
   }
 }
