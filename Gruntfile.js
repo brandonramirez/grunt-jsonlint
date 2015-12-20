@@ -43,6 +43,9 @@ module.exports = function(grunt) {
       },
       overflowTest: {
         src: [ 'test/issue13/**/*.json' ]
+      },
+      invalid: {
+        src: [ 'test/invalid.json' ]
       }
     },
 
