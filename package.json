@@ -1,6 +1,6 @@
 {
   "name": "grunt-jsonlint",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Validate JSON files from grunt.",
   "main": "tasks/jsonlint.js",
   "scripts": {
