@@ -33,7 +33,7 @@
     "lodash": "^3.10.1",
     "mkdirp-promise": "^1.0.3",
     "mocha": "^2.3.4",
-    "promise": "^7.0.4",
+    "promise": "^7.1.1",
     "sinon": "^1.17.2",
     "sinon-expect": "^0.2.0"
   }
