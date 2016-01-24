@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         src: [ 'package.json' ]
       },
       tasks: {
-        src: [ 'tasks/*.js' ],
+        src: [ 'tasks/*.js', 'lib/*.js' ],
         options: {
           eqnull: true,
           curly: true,
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         }
       },
       tests: {
-        src: [ 'test/**/*.js' ],
+        src: [ 'test/*.js' ],
         options: {
           eqnull: true,
           indent: 2,
