@@ -27,6 +27,23 @@ An error will be thrown if the JSON file contains syntax errors.
 
 Here's a simple [tutorial](http://grunt-tasks.com/grunt-jsonlint/ "grunt") on how to use grunt-jsonlint
 
+# Formatting
+
+Add the following (multi-)task to your Gruntfile:
+
+    jsonlint: {
+      all: {
+        src: [ 'some/valid.json' ],
+        options: {
+          format: true,
+          indent: 2
+        }
+      }
+    }
+
+* format, when true JSON.stringify will be used to format the JavaScript (if it is valid)
+* indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
+
 # Roadmap
 
 The underlying jsonlint library has many features not yet exposed.
