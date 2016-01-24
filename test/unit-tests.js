@@ -78,6 +78,18 @@ describe('grunt-jsonlint task', function () {
     expectSuccess(grunt);
   });
 
+  // formatting of the JSON files.
+
+  it('reformats the input JSON file when configured to do so, using the default indentation level of 2', function () {
+    testReformattingFile();
+  });
+
+  it('reformats the input JSON file using the specified indentation level', function () {
+    testReformattingFile(1);
+    testReformattingFile(2);
+    testReformattingFile(3);
+  });
+
 });
 
 function createPassingJsonlintSpy() {
@@ -159,3 +171,38 @@ function expectFailure(grunt, atLine) {
   expect(grunt.log.error).was.calledWith('File "test/invalid.json" failed JSON validation at line ' + atLine + '.');
 }
 
+function testReformattingFile(indent) {
+  var options = {
+    format: true
+  };
+
+  if (indent !== undefined) {
+    options.indent = indent;
+  }
+
+  var expectedIndent = '';
+  if (indent === undefined) {
+    expectedIndent = '  ';
+  }
+  else {
+    for (var i = 0; i < indent; i++) {
+      expectedIndent += ' ';
+    }
+  }
+
+  // Build an unformatted file for testing.
+  grunt.file.write(__dirname + '/reformat-this.json', '{"somethingsomething":"something","something":"dark side"}');
+
+  runWithFiles(grunt, createPassingJsonlintSpy(), [ 'test/reformat-this.json' ], options);
+
+  var formatted = grunt.file.read(__dirname + '/reformat-this.json');
+  var lines = formatted.split(/\r?\n/);
+  expect(lines).to.have.length(5);
+  expect(lines[0]).to.be('{');
+  expect(lines[1]).to.be(expectedIndent + '"somethingsomething": "something",');
+  expect(lines[2]).to.be(expectedIndent + '"something": "dark side"');
+  expect(lines[3]).to.be('}');
+  expect(lines[4]).to.be.empty();
+
+  grunt.file.delete(__dirname + '/reformat-this.json');
+}

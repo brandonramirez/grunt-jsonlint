@@ -3,3 +3,4 @@ npm-debug.log
 *.gz
 *.tgz
 test/issue13/
+test/reformat-this.json
