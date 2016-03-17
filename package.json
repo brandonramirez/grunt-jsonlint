@@ -28,7 +28,7 @@
     "fs-writefile-promise": "^1.0.3",
     "grunt": "~0.4.5",
     "grunt-cli": "0.1.13",
-    "grunt-contrib-jshint": "~0.12.0",
+    "grunt-contrib-jshint": "~1.0.0",
     "grunt-mocha-test": "^0.12.7",
     "lodash": "^4.0.0",
     "mkdirp-promise": "^1.0.3",
