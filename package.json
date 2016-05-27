@@ -6,6 +6,9 @@
   "scripts": {
     "test": "grunt test"
   },
+  "engines": {
+    "node": ">=4.0"
+  },
   "repository": "https://github.com/brandonramirez/grunt-jsonlint",
   "bugs": "https://github.com/brandonramirez/grunt-jsonlint/issues",
   "keywords": [
