@@ -76,4 +76,5 @@ Which does the same thing.
 * 2013-11-18   v1.0.4	Updated for latest dependencies.
 * 2015-10-11   v1.0.5	Updated for latest dependencies.
 * 2015-10-29   v1.0.6	CJSON support thanks to @fredghosn, unit tests
-* 2015-12-23   v1.0.7 Include file name and JSON source line number in error messages
+* 2015-12-23   v1.0.7	Include file name and JSON source line number in error messages
+* 2016-05-27   v1.0.8	Option to format JSON file thanks to @robblue2x
