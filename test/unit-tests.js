@@ -168,7 +168,8 @@ function expectSuccess(gruntSpy) {
 
 function expectFailure(grunt, atLine) {
   expect(grunt.log.error).was.calledOnce();
-  expect(grunt.log.error).was.calledWith('File "test/invalid.json" failed JSON validation at line ' + atLine + '.');
+  expect(grunt.log.error).was.calledWith('test/invalid.json(' + atLine + '): error: failed JSON validation');
+  //expect(grunt.log.error).was.calledWith('File "test/invalid.json" failed JSON validation at line ' + atLine + '.');
 }
 
 function testReformattingFile(indent) {
