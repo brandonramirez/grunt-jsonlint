@@ -46,6 +46,12 @@ module.exports = function(grunt) {
       },
       invalid: {
         src: [ 'test/invalid.json' ]
+      },
+      invalidVisualStudio: {
+        src: [ 'test/invalid.json' ],
+        options: {
+          formatter: 'msbuild'
+        }
       }
     },
 

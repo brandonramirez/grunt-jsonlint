@@ -78,6 +78,15 @@ describe('grunt-jsonlint task', function () {
     expectSuccess(grunt);
   });
 
+  it('formats validation errors for Visual Studio when the appropriate option is given', function () {
+    var jsonlint = createFailingJsonlintSpy();
+
+    runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ], {
+      formatter: 'msbuild'
+    });
+    expect(grunt.log.error).was.calledWith('test/invalid.json(3): error: failed JSON validation');
+  });
+
   // formatting of the JSON files.
 
   it('reformats the input JSON file when configured to do so, using the default indentation level of 2', function () {
@@ -168,8 +177,8 @@ function expectSuccess(gruntSpy) {
 
 function expectFailure(grunt, atLine) {
   expect(grunt.log.error).was.calledOnce();
-  expect(grunt.log.error).was.calledWith('test/invalid.json(' + atLine + '): error: failed JSON validation');
-  //expect(grunt.log.error).was.calledWith('File "test/invalid.json" failed JSON validation at line ' + atLine + '.');
+  //expect(grunt.log.error).was.calledWith('test/invalid.json(' + atLine + '): error: failed JSON validation');
+  expect(grunt.log.error).was.calledWith('File "test/invalid.json" failed JSON validation at line ' + atLine + '.');
 }
 
 function testReformattingFile(indent) {
