@@ -15,7 +15,10 @@ Add the following (multi-)task to your Gruntfile:
 
     jsonlint: {
       sample: {
-        src: [ 'some/valid.json' ]
+        src: [ 'some/valid.json' ],
+        options: {
+          formatter: 'prose'
+        }
       }
     }
 
@@ -23,7 +26,7 @@ Add the following to load the task into your Gruntfile:
 
     grunt.loadNpmTasks('grunt-jsonlint');
 
-An error will be thrown if the JSON file contains syntax errors.
+An error will be thrown if the JSON file contains syntax errors.  To prefer an error format compatible with Visual Studio, change the formatter to 'msbuild'.
 
 Here's a simple [tutorial](http://grunt-tasks.com/grunt-jsonlint/ "grunt") on how to use grunt-jsonlint
 
@@ -36,7 +39,7 @@ Add the following (multi-)task to your Gruntfile:
         src: [ 'some/valid.json' ],
         options: {
           format: true,
-          indent: 2
+          indent: 2,
         }
       }
     }
