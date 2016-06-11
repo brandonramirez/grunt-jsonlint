@@ -14,18 +14,21 @@ describe('grunt-jsonlint task', function () {
   before('stub out and spy on grunt logger', function () {
     sinon.stub(grunt.log, 'ok');
     sinon.stub(grunt.log, 'error');
+    sinon.stub(grunt.log, 'writeln');
     sinon.stub(grunt.fail, 'warn');
   });
 
   after('restore grung logger methods', function () {
     grunt.log.ok.restore();
     grunt.log.error.restore();
+    grunt.log.writeln.restore();
     grunt.fail.warn.restore();
   });
 
   afterEach('reset the spy counts', function () {
     grunt.log.ok.reset();
     grunt.log.error.reset();
+    grunt.log.writeln.reset();
     grunt.fail.warn.reset();
   });
 
@@ -78,6 +81,35 @@ describe('grunt-jsonlint task', function () {
     expectSuccess(grunt);
   });
 
+  it('reports the raw jsonlint exception during failure', function () {
+    var jsonlint = createFailingJsonlintSpy();
+
+    runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ], {
+      reporter: 'exception'
+    });
+
+    var e = grunt.log.writeln.args[0][0];
+
+    expect(e).to.be.an(Error);
+    expect(e.message).to.contain('Invalid JSON');
+  });
+
+  it('includes jshint-style details of failure', function () {
+    var jsonlint = createFailingJsonlintSpy();
+
+    runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ], {
+      reporter: 'jshint'
+    });
+
+    var message = grunt.log.writeln.args[0][0];
+
+    expect(message).to.contain('"3"');
+    expect(message).to.contain('3 | ');
+    expect(message).to.contain(grunt.util.linefeed);
+    expect(message).to.contain('^ Expected');
+    expect(message).to.contain('and instead saw ');
+  });
+
   it('formats validation errors for Visual Studio when the appropriate option is given', function () {
     var jsonlint = createFailingJsonlintSpy();
 
@@ -113,7 +145,21 @@ function createPassingJsonlintSpy() {
 function createFailingJsonlintSpy() {
   var x = {
     parse: function (data) {
-      this.yy.parseError('Invalid JSON', { line: 3 });
+      var hash = {
+        "text": "\"3\"",
+        "token": "STRING",
+        "line": 3,
+        "loc": {
+          "first_line": 3,
+          "last_line": 3,
+          "first_column": 8,
+          "last_column": 11
+        },
+        "expected": [
+          "']'"
+        ]
+      };
+      this.yy.parseError('Invalid JSON', hash);
       throw new Error('Invalid JSON');
     },
     parser: {
@@ -177,7 +223,6 @@ function expectSuccess(gruntSpy) {
 
 function expectFailure(grunt, atLine) {
   expect(grunt.log.error).was.calledOnce();
-  //expect(grunt.log.error).was.calledWith('test/invalid.json(' + atLine + '): error: failed JSON validation');
   expect(grunt.log.error).was.calledWith('File "test/invalid.json" failed JSON validation at line ' + atLine + '.');
 }
 

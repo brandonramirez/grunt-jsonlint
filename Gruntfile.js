@@ -52,6 +52,12 @@ module.exports = function(grunt) {
         options: {
           formatter: 'msbuild'
         }
+      },
+      invalidJshintStyle: {
+        src: [ 'test/invalid.json' ],
+        options: {
+          reporter: 'jshint'
+        }
       }
     },
 
