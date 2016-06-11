@@ -4,3 +4,4 @@ npm-debug.log
 *.tgz
 test/issue13/
 test/reformat-this.json
+.vscode/
