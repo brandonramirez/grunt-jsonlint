@@ -3,7 +3,7 @@ grunt-jsonlint [![Build Status](https://travis-ci.org/brandonramirez/grunt-jsonl
 
 Validate JSON files from grunt.
 
-Requires grunt 1.0 and node 4.0.
+Requires grunt 1.0+ and node 4.0+.
 
 # Install
 
@@ -47,6 +47,62 @@ Add the following (multi-)task to your Gruntfile:
 * format, when true JSON.stringify will be used to format the JavaScript (if it is valid)
 * indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
 
+# Reporting
+
+There are a few options available for reporting errors:
+
+## Error message format
+
+The standard error message format (`prose`) is optimized for human reading and looks like:
+
+    >> File "test/invalid.json" failed JSON validation at line 9.
+
+This is customizable to conform to the Visual Studio style by specifying the `formatter` option as `msbuild`, like:
+
+    jsonlint: {
+
+      visualStudioExample: {
+        src: [ 'test/invalid.json' ],
+        options: {
+          formatter: 'msbuild'
+        }
+      }
+
+    }
+
+The output will look like:
+
+    >> test/invalid.json(9): error: failed JSON validation
+
+## Error reporting
+
+By default, the raw error from the underlying `jsonlint` library comes through to the grunt output.  It looks like:
+
+    Error: Parse error on line 9:
+    ...        "2"        "3",      ],      
+    ----------------------^
+    Expecting 'EOF', '}', ':', ',', ']', got 'STRING'
+
+To customize this, change the `reporter` option to `jshint` (the format is inspired by how `jshint` formats their output, hence the name):
+
+    jsonlint: {
+
+      jshintStyle: {
+        src: [ 'test/invalid.json' ],
+        options: {
+          reporter: 'jshint'
+        }
+      }
+
+    }
+
+The output will look like:
+
+     9 |     "3"
+             ^ Expected 'EOF', '}', ':', ',', ']' and instead saw '3'
+
+The default reporter is called `exception` since it simply relays the raw exception.
+
 # Roadmap
 
 The underlying jsonlint library has many features not yet exposed.
@@ -81,3 +137,4 @@ Which does the same thing.
 * 2015-10-29   v1.0.6	CJSON support thanks to @fredghosn, unit tests
 * 2015-12-23   v1.0.7	Include file name and JSON source line number in error messages
 * 2016-05-27   v1.0.8	Option to format JSON file thanks to @robblue2x
+* 2016-06-11   v1.1.0	Enhanced error reporting for better human reading and Visual Studio integration.
