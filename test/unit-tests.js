@@ -1,5 +1,5 @@
 var grunt = require('grunt');
-var jsonlint = require('jsonlint');
+var jsonlint = require('@prantlf/jsonlint');
 var strip = require('strip-json-comments');
 var _ = require('lodash');
 
