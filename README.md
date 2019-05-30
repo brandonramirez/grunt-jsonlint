@@ -40,12 +40,14 @@ Add the following (multi-)task to your Gruntfile:
         options: {
           format: true,
           indent: 2,
+          sortKeys: false
         }
       }
     }
 
 * format, when true JSON.stringify will be used to format the JavaScript (if it is valid)
 * indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
+* sortKeys, when true keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
 
 # Reporting
 

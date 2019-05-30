@@ -1,5 +1,6 @@
 var grunt = require('grunt');
 var jsonlint = require('@prantlf/jsonlint');
+var sorter = require('@prantlf/jsonlint/lib/sorter');
 var strip = require('strip-json-comments');
 var _ = require('lodash');
 
@@ -131,6 +132,10 @@ describe('grunt-jsonlint task', function () {
     testReformattingFile(3);
   });
 
+  it('reformats the input JSON file with object keys sorted', function () {
+    testSortingObjectKeys();
+  });
+
 });
 
 function createPassingJsonlintSpy() {
@@ -209,7 +214,7 @@ function runWithFiles(grunt, jsonlint, files, options) {
     };
   });
 
-  taskFactory(grunt, jsonlint, strip).bind(createTaskContext({
+  taskFactory(grunt, jsonlint, strip, sorter).bind(createTaskContext({
     files: gruntFiles,
     options: options
   }))();
@@ -248,7 +253,7 @@ function testReformattingFile(indent) {
   // Build an unformatted file for testing.
   grunt.file.write(__dirname + '/reformat-this.json', '{"somethingsomething":"something","something":"dark side"}');
 
-  runWithFiles(grunt, createPassingJsonlintSpy(), [ 'test/reformat-this.json' ], options);
+  runWithFiles(grunt, jsonlint, [ 'test/reformat-this.json' ], options);
 
   var formatted = grunt.file.read(__dirname + '/reformat-this.json');
   var lines = formatted.split(/\r?\n/);
@@ -256,6 +261,29 @@ function testReformattingFile(indent) {
   expect(lines[0]).to.be('{');
   expect(lines[1]).to.be(expectedIndent + '"somethingsomething": "something",');
   expect(lines[2]).to.be(expectedIndent + '"something": "dark side"');
+  expect(lines[3]).to.be('}');
+  expect(lines[4]).to.be.empty();
+
+  grunt.file.delete(__dirname + '/reformat-this.json');
+}
+
+function testSortingObjectKeys() {
+  var options = {
+    format: true,
+    sortKeys: true
+  };
+
+  // Build an unformatted file for testing.
+  grunt.file.write(__dirname + '/reformat-this.json', '{"somethingsomething":"something","something":"dark side"}');
+
+  runWithFiles(grunt, jsonlint, [ 'test/reformat-this.json' ], options);
+
+  var formatted = grunt.file.read(__dirname + '/reformat-this.json');
+  var lines = formatted.split(/\r?\n/);
+  expect(lines).to.have.length(5);
+  expect(lines[0]).to.be('{');
+  expect(lines[1]).to.be('  "something": "dark side",');
+  expect(lines[2]).to.be('  "somethingsomething": "something"');
   expect(lines[3]).to.be('}');
   expect(lines[4]).to.be.empty();
 
