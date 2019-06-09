@@ -6,14 +6,10 @@
  * Licensed under the MIT license.
  */
 
-module.exports = function (grunt) {
-  "use strict";
+const jsonlint = require('@prantlf/jsonlint');
+const sorter = require('@prantlf/jsonlint/lib/sorter');
+const gruntJsonLintTask = require('../lib/grunt-jsonlint-task');
 
-  var jsonlint = require('@prantlf/jsonlint');
-  var sorter = require('@prantlf/jsonlint/lib/sorter');
-  var gruntJsonLintTask = require('../lib/grunt-jsonlint-task');
-
-  grunt.registerMultiTask("jsonlint", "Validate JSON files.", gruntJsonLintTask(grunt, jsonlint, sorter));
+module.exports = (grunt) => {
+  grunt.registerMultiTask('jsonlint', 'Validate JSON files.', gruntJsonLintTask(grunt, jsonlint, sorter));
 };
-
-

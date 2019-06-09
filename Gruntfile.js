@@ -1,36 +1,17 @@
-module.exports = function(grunt) {
-
+module.exports = (grunt) => {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    jshint: {
+    eslint: {
       gruntfile: {
         src: [ 'Gruntfile.js' ]
       },
-      packageJson: {
-        src: [ 'package.json' ]
-      },
       tasks: {
-        src: [ 'tasks/*.js', 'lib/*.js' ],
-        options: {
-          eqnull: true,
-          curly: true,
-          newcap: true,
-          unused: true,
-          indent: 2,
-          noempty: true,
-
-          node: true
-        }
+        src: [ 'tasks/*.js', 'lib/*.js' ]
       },
       tests: {
-        src: [ 'test/*.js' ],
-        options: {
-          eqnull: true,
-          indent: 2,
-          node: true
-        }
+        src: [ 'test/*.js' ]
       }
     },
 
@@ -86,17 +67,16 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-mocha-test');
 
-  require('./tasks/jsonlint')(grunt);
+  require('./tasks/jsonlint')(grunt); // eslint-disable-line global-require
 
   grunt.registerTask('test', [
-    'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments', 'jsonlint:singleQuotes',
+    'eslint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments', 'jsonlint:singleQuotes',
     'mochaTest'
   ]);
 
   // Default task(s).
   grunt.registerTask('default', [ 'test' ]);
-
 };
