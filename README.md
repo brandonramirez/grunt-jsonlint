@@ -38,11 +38,13 @@ There is a couple of options, which can support non-standard JSON syntax, usuall
       all: {
         src: [ 'some/settings.json' ],
         options: {
+          allowSingleQuotedStrings: true,
           ignoreComments: true
         }
       }
     }
 
+* allowSingleQuotedStrings, when true single quotes will be accepted as alternative delimiters for strings
 * ignoreComments, when true JavaScript-style single-line and multiple-line comments will be recognised and ignored during parsing
 
 # Formatting

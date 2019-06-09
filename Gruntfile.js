@@ -41,6 +41,12 @@ module.exports = function(grunt) {
       packageJson: {
         src: [ 'package.json' ]
       },
+      singleQuotes: {
+        src: [ 'test/single-quotes.json' ],
+        options: {
+          allowSingleQuotedStrings: true
+        }
+      },
       comments: {
         src: [ 'test/cjson.json' ],
         options: {
@@ -86,7 +92,7 @@ module.exports = function(grunt) {
   require('./tasks/jsonlint')(grunt);
 
   grunt.registerTask('test', [
-    'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments',
+    'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments', 'jsonlint:singleQuotes',
     'mochaTest'
   ]);
 
