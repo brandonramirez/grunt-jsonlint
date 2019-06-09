@@ -49,6 +49,18 @@ module.exports = function(grunt) {
           }
         }
       },
+      singleQuotes: {
+        src: [ 'test/single-quotes.json' ],
+        options: {
+          allowSingleQuotedStrings: true
+        }
+      },
+      comments: {
+        src: [ 'test/cjson.json' ],
+        options: {
+          ignoreComments: true
+        }
+      },
       overflowTest: {
         src: [ 'test/issue13/**/*.json' ]
       },
@@ -88,7 +100,7 @@ module.exports = function(grunt) {
   require('./tasks/jsonlint')(grunt);
 
   grunt.registerTask('test', [
-    'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:schema',
+    'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments', 'jsonlint:singleQuotes', 'jsonlint:schema',
     'mochaTest'
   ]);
 
