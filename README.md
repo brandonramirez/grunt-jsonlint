@@ -30,6 +30,23 @@ An error will be thrown if the JSON file contains syntax errors.  To prefer an e
 
 Here's a simple [tutorial](http://grunt-tasks.com/grunt-jsonlint/ "grunt") on how to use grunt-jsonlint
 
+# Customizing
+
+There is a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
+
+    jsonlint: {
+      all: {
+        src: [ 'some/settings.json' ],
+        options: {
+          allowSingleQuotedStrings: true,
+          ignoreComments: true
+        }
+      }
+    }
+
+* allowSingleQuotedStrings, when true single quotes will be accepted as alternative delimiters for strings
+* ignoreComments, when true JavaScript-style single-line and multiple-line comments will be recognised and ignored during parsing
+
 # Formatting
 
 Add the following (multi-)task to your Gruntfile:
