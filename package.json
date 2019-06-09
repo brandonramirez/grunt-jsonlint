@@ -7,7 +7,7 @@
     "test": "grunt test"
   },
   "engines": {
-    "node": ">=4.0"
+    "node": ">=6.0"
   },
   "repository": "https://github.com/brandonramirez/grunt-jsonlint",
   "bugs": "https://github.com/brandonramirez/grunt-jsonlint/issues",

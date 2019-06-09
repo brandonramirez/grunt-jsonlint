@@ -3,7 +3,7 @@ grunt-jsonlint [![Build Status](https://travis-ci.org/brandonramirez/grunt-jsonl
 
 Validate JSON files from grunt.
 
-Requires grunt 1.0+ and node 4.0+.
+Requires grunt 1.0+ and node 6.0+.
 
 # Install
 
