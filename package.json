@@ -18,7 +18,8 @@
   ],
   "author": "Brandon Ramirez <brandon.s.ramirez@gmail.com> (http://www.brandonsramirez.com/)",
   "contributors": [
-    "Fred Ghosn (https://github.com/fredghosn)"
+    "Fred Ghosn (https://github.com/fredghosn)",
+    "Ferdinand Prantl (https://github.com/prantlf)"
   ],
   "license": "MIT",
   "dependencies": {
