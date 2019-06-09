@@ -32,7 +32,7 @@ Here's a simple [tutorial](http://grunt-tasks.com/grunt-jsonlint/ "grunt") on ho
 
 # Customizing
 
-There is a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
+There are a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
 
     jsonlint: {
       all: {
@@ -64,7 +64,7 @@ Add the following (multi-)task to your Gruntfile:
 
 * format, when true JSON.stringify will be used to format the JavaScript (if it is valid)
 * indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
-* sortKeys, when true keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
+* sortKeys, when true, keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
 
 # Reporting
 
@@ -128,7 +128,6 @@ The underlying jsonlint library has many features not yet exposed.
 Each of these would be valuable in grunt.
 
 * Schema validation
-* Sort file by key
 
 # Running tests
 
