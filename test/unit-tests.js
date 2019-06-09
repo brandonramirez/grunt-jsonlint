@@ -131,10 +131,9 @@ describe('grunt-jsonlint task', function () {
     testReformattingFile(3);
   });
 
-  it('reformats the input JSON file with object keys sorted', function () {
-    testSortingObjectKeys();
-  });
+  it('reformats the input JSON file with object keys sorted', testSortingObjectKeys);
 
+  it('does not sort keys unless asked to do so', testNotSortingObjectKeys);
 });
 
 function createPassingJsonlintSpy() {
@@ -272,8 +271,13 @@ function testSortingObjectKeys() {
     sortKeys: true
   };
 
+  var sourceJson = JSON.stringify({
+    'somethingsomething': 'something',
+    'something': 'dark side'
+  }, null, 2);
+
   // Build an unformatted file for testing.
-  grunt.file.write(__dirname + '/reformat-this.json', '{"somethingsomething":"something","something":"dark side"}');
+  grunt.file.write(__dirname + '/reformat-this.json', sourceJson);
 
   runWithFiles(grunt, jsonlint, [ 'test/reformat-this.json' ], options);
 
@@ -287,4 +291,26 @@ function testSortingObjectKeys() {
   expect(lines[4]).to.be.empty();
 
   grunt.file.delete(__dirname + '/reformat-this.json');
+}
+
+function testNotSortingObjectKeys() {
+  var options = {
+    format: true,
+    sortKeys: false
+  };
+
+  var sourceJson = JSON.stringify({
+    'somethingsomething': 'something',
+    'something': 'dark side'
+  }, null, 2);
+
+  // Build an unformatted file for testing.
+  grunt.file.write(__dirname + '/dont-reformat-this.json', sourceJson);
+
+  runWithFiles(grunt, jsonlint, [ 'test/dont-reformat-this.json' ], options);
+
+  var formatted = grunt.file.read(__dirname + '/dont-reformat-this.json');
+  expect(formatted).to.be(sourceJson + "\n");
+
+  grunt.file.delete(__dirname + '/dont-reformat-this.json');
 }
