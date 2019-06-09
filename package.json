@@ -4,7 +4,7 @@
   "description": "Validate JSON files from grunt.",
   "main": "tasks/jsonlint.js",
   "scripts": {
-    "test": "grunt test",
+    "test": "nyc grunt test",
     "fix-lint-errors": "eslint --fix tasks/ lib/ test/*.js"
   },
   "engines": {
@@ -39,6 +39,7 @@
     "lodash": "^4.17.11",
     "mkdirp-promise": "^5.0.1",
     "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
     "promise": "^8.0.3",
     "sinon": "^7.3.2",
     "sinon-expect": "^0.3.0"
