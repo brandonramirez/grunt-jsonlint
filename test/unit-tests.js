@@ -41,12 +41,26 @@ describe('grunt-jsonlint task', function () {
 
   it('fails an invalid JSON file', function () {
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
-    expectFailure(grunt, 9);
+    expectFailure(grunt, 'test/invalid.json', 9);
   });
 
   it('passes a valid CJSON file', function () {
     runWithFiles(grunt, jsonlint, [ 'test/cjson.json' ], { cjson: true });
     expectSuccess(grunt);
+  });
+
+  it('passes a JSON file complying with the schema', function () {
+    runWithFiles(grunt, jsonlint, [ 'test/3.json' ], {
+      schema: { src: 'test/3.schema.json' }
+    });
+    expectSuccess(grunt);
+  });
+
+  it('fails a JSON file not complying with the schema', function () {
+    runWithFiles(grunt, jsonlint, [ 'test/valid.json' ], {
+      schema: { src: 'test/3.schema.json' }
+    });
+    expectFailure(grunt, 'test/valid.json');
   });
 
   // reporting behaviors
@@ -55,14 +69,14 @@ describe('grunt-jsonlint task', function () {
     var jsonlint = createFailingJsonlintSpy();
 
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
-    expectFailure(grunt, 3);
+    expectFailure(grunt, 'test/invalid.json', 3);
   });
 
   it('reports the file name and line number for each file that failed validation', function () {
     var jsonlint = createFailingJsonlintSpy();
 
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
-    expectFailure(grunt, 3);
+    expectFailure(grunt, 'test/invalid.json', 3);
   });
 
   it('fails the build when a JSON file fails to validate', function () {
@@ -221,9 +235,14 @@ function expectSuccess(gruntSpy) {
   expect(gruntSpy.log.ok).was.calledWith('1 file lint free.');
 }
 
-function expectFailure(grunt, atLine) {
+function expectFailure(grunt, file, atLine) {
   expect(grunt.log.error).was.calledOnce();
-  expect(grunt.log.error).was.calledWith('File "test/invalid.json" failed JSON validation at line ' + atLine + '.');
+  var message = 'File "' + file + '" failed JSON validation';
+  if (atLine != null) {
+    message += ' at line ' + atLine;
+  }
+  message += '.';
+  expect(grunt.log.error).was.calledWith(message);
 }
 
 function testReformattingFile(indent) {

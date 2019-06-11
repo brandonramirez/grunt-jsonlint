@@ -88,8 +88,7 @@ module.exports = function(grunt) {
   require('./tasks/jsonlint')(grunt);
 
   grunt.registerTask('test', [
-    'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:schema',
-    'mochaTest'
+    'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'mochaTest'
   ]);
 
   // Default task(s).
