@@ -1,6 +1,7 @@
 var grunt = require('grunt');
 var jsonlint = require('@prantlf/jsonlint');
 var strip = require('strip-json-comments');
+var validator = require('@prantlf/jsonlint/lib/validator');
 var _ = require('lodash');
 
 var expect = require('expect.js');
@@ -223,7 +224,7 @@ function runWithFiles(grunt, jsonlint, files, options) {
     };
   });
 
-  taskFactory(grunt, jsonlint, strip).bind(createTaskContext({
+  taskFactory(grunt, jsonlint, strip, validator).bind(createTaskContext({
     files: gruntFiles,
     options: options
   }))();
