@@ -3,7 +3,7 @@ grunt-jsonlint [![Build Status](https://travis-ci.org/brandonramirez/grunt-jsonl
 
 Validate JSON files from grunt.
 
-Requires grunt 1.0+ and node 4.0+.
+Requires grunt 1.0+ and node 6.0+.
 
 # Install
 
@@ -30,6 +30,23 @@ An error will be thrown if the JSON file contains syntax errors.  To prefer an e
 
 Here's a simple [tutorial](http://grunt-tasks.com/grunt-jsonlint/ "grunt") on how to use grunt-jsonlint
 
+# Customizing
+
+There are a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
+
+    jsonlint: {
+      all: {
+        src: [ 'some/settings.json' ],
+        options: {
+          allowSingleQuotedStrings: true,
+          ignoreComments: true
+        }
+      }
+    }
+
+* allowSingleQuotedStrings, when true single quotes will be accepted as alternative delimiters for strings
+* ignoreComments, when true JavaScript-style single-line and multiple-line comments will be recognised and ignored during parsing
+
 # Formatting
 
 Add the following (multi-)task to your Gruntfile:
@@ -40,12 +57,14 @@ Add the following (multi-)task to your Gruntfile:
         options: {
           format: true,
           indent: 2,
+          sortKeys: false
         }
       }
     }
 
 * format, when true JSON.stringify will be used to format the JavaScript (if it is valid)
 * indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
+* sortKeys, when true, keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
 
 # Schema Validation
 
@@ -128,7 +147,6 @@ The underlying jsonlint library has many features not yet exposed.
 Each of these would be valuable in grunt.
 
 * Schema validation
-* Sort file by key
 
 # Running tests
 

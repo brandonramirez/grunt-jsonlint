@@ -5,3 +5,4 @@ npm-debug.log
 test/issue13/
 test/reformat-this.json
 .vscode/
+.nyc_output/

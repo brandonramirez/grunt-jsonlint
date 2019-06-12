@@ -4,10 +4,11 @@
   "description": "Validate JSON files from grunt.",
   "main": "tasks/jsonlint.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "nyc grunt test",
+    "fix-lint-errors": "eslint --fix tasks/ lib/ test/*.js"
   },
   "engines": {
-    "node": ">=4.0"
+    "node": ">=6.0"
   },
   "repository": "https://github.com/brandonramirez/grunt-jsonlint",
   "bugs": "https://github.com/brandonramirez/grunt-jsonlint/issues",
@@ -18,23 +19,27 @@
   ],
   "author": "Brandon Ramirez <brandon.s.ramirez@gmail.com> (http://www.brandonsramirez.com/)",
   "contributors": [
-    "Fred Ghosn (https://github.com/fredghosn)"
+    "Fred Ghosn (https://github.com/fredghosn)",
+    "Ferdinand Prantl (https://github.com/prantlf)"
   ],
   "license": "MIT",
   "dependencies": {
-    "@prantlf/jsonlint": "6.0.0",
-    "strip-json-comments": "^3.0.1"
+    "@prantlf/jsonlint": "6.2.1"
   },
   "devDependencies": {
-    "async": "^3.0.0",
+    "async": "^3.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
     "expect.js": "^0.3.1",
     "fs-writefile-promise": "^3.0.2",
     "grunt": "~1.0.4",
-    "grunt-contrib-jshint": "~2.1.0",
+    "grunt-eslint": "^21.0.0",
     "grunt-mocha-test": "^0.13.3",
     "lodash": "^4.17.11",
     "mkdirp-promise": "^5.0.1",
     "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
     "promise": "^8.0.3",
     "sinon": "^7.3.2",
     "sinon-expect": "^0.3.0"
