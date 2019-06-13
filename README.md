@@ -141,13 +141,6 @@ The output will look like:
 
 The default reporter is called `exception` since it simply relays the raw exception.
 
-# Roadmap
-
-The underlying jsonlint library has many features not yet exposed.
-Each of these would be valuable in grunt.
-
-* Schema validation
-
 # Running tests
 
 Unit tests are provided for automated regression testing.  The easiest way
