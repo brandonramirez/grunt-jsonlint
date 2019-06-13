@@ -22,6 +22,14 @@ module.exports = (grunt) => {
       packageJson: {
         src: [ 'package.json' ]
       },
+      schema: {
+        src: [ 'test/3.json' ],
+        options: {
+          schema: {
+            src: 'test/3.schema.json'
+          }
+        }
+      },
       singleQuotes: {
         src: [ 'test/single-quotes.json' ],
         options: {

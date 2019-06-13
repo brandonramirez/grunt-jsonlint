@@ -66,6 +66,25 @@ Add the following (multi-)task to your Gruntfile:
 * indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
 * sortKeys, when true, keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
 
+# Schema Validation
+
+You can validate JSON files using JSON Schema drafts 04, 06 or 07:
+
+    jsonlint: {
+      all: {
+        src: [ 'some/manifest.json' ],
+        options: {
+          schema: {
+            src: 'some/manifest-schema.json',
+            environment: 'json-schema-draft-04'
+          }
+        }
+      }
+    }
+
+* schema, when set to a file path, the file will be used as a source of the JSON Schema to validate the JSON files in addition to the syntax checks
+* environment, can specify the version of the JSON Schema draft to use for validation: "json-schema-draft-04", "json-schema-draft-06" or "json-schema-draft-07" (if not set, the schema draft version will be inferred automatically)
+
 # Reporting
 
 There are a few options available for reporting errors:
