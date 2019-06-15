@@ -6,3 +6,5 @@ test/
 .travis.yml
 Gruntfile.js
 test/issue13/
+.vscode/
+.nyc_output/
