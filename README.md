@@ -168,3 +168,4 @@ Which does the same thing.
 * 2015-12-23   v1.0.7	Include file name and JSON source line number in error messages
 * 2016-05-27   v1.0.8	Option to format JSON file thanks to @robblue2x
 * 2016-06-11   v1.1.0	Enhanced error reporting for better human reading and Visual Studio integration.
+* 2019-06-14   v2.0.0	Schema validation, sorting keys, single quotes thanks to @prantlf, dependency upgrades, drop support for node 4.x.
