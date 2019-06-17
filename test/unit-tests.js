@@ -63,6 +63,18 @@ describe('grunt-jsonlint task', () => {
     expectFailure(grunt, 'test/valid.json', 1, 1);
   });
 
+  it('passes a JSON file with duplicate object keys', () => {
+    runWithFiles(grunt, jsonlint, [ 'test/duplicate-keys.json' ]);
+    expectSuccess(grunt);
+  });
+
+  it('fails a JSON file not complying with the schema', () => {
+    runWithFiles(grunt, jsonlint, [ 'test/duplicate-keys.json' ], {
+      allowDuplicateObjectKeys: false
+    });
+    expectFailure(grunt, 'test/duplicate-keys.json', 3, 7);
+  });
+
   // reporting behaviors
 
   it('reports a failure for each files which failed to validate', () => {
