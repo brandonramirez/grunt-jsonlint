@@ -3,6 +3,9 @@ npm-debug.log
 *.gz
 *.tgz
 test/
+.eslintrc.json
+.gitignore
+.npmignore
 .travis.yml
 Gruntfile.js
 test/issue13/
