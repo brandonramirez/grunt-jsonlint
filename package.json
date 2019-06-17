@@ -24,7 +24,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@prantlf/jsonlint": "6.2.1"
+    "@prantlf/jsonlint": "^8.0.0"
   },
   "devDependencies": {
     "async": "^3.0.1",
@@ -34,7 +34,7 @@
     "expect.js": "^0.3.1",
     "fs-writefile-promise": "^3.0.2",
     "grunt": "~1.0.4",
-    "grunt-eslint": "^21.0.0",
+    "grunt-eslint": "^21.1.0",
     "grunt-mocha-test": "^0.13.3",
     "lodash": "^4.17.11",
     "mkdirp-promise": "^5.0.1",

@@ -41,7 +41,7 @@ describe('grunt-jsonlint task', () => {
 
   it('fails an invalid JSON file', () => {
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
-    expectFailure(grunt, 'test/invalid.json', 9);
+    expectFailure(grunt, 'test/invalid.json', 10, 9);
   });
 
   it('passes a valid CJSON file', () => {
@@ -60,7 +60,7 @@ describe('grunt-jsonlint task', () => {
     runWithFiles(grunt, jsonlint, [ 'test/valid.json' ], {
       schema: { src: 'test/3.schema.json' }
     });
-    expectFailure(grunt, 'test/valid.json');
+    expectFailure(grunt, 'test/valid.json', 1, 1);
   });
 
   // reporting behaviors
@@ -69,14 +69,14 @@ describe('grunt-jsonlint task', () => {
     const jsonlintSpy = createFailingJsonlintSpy();
 
     runWithFiles(grunt, jsonlintSpy, [ 'test/invalid.json' ]);
-    expectFailure(grunt, 'test/invalid.json', 3);
+    expectFailure(grunt, 'test/invalid.json', 3, 8);
   });
 
   it('reports the file name and line number for each file that failed validation', () => {
     const jsonlintSpy = createFailingJsonlintSpy();
 
     runWithFiles(grunt, jsonlintSpy, [ 'test/invalid.json' ]);
-    expectFailure(grunt, 'test/invalid.json', 3);
+    expectFailure(grunt, 'test/invalid.json', 3, 8);
   });
 
   it('fails the build when a JSON file fails to validate', () => {
@@ -102,10 +102,10 @@ describe('grunt-jsonlint task', () => {
       reporter: 'exception'
     });
 
-    const e = grunt.log.writeln.args[0][0];
+    const message = grunt.log.writeln.args[0][0];
 
-    expect(e).to.be.an(Error);
-    expect(e.message).to.contain('Invalid JSON');
+    expect(message).to.contain('Expected');
+    expect(message).to.contain('and instead saw');
   });
 
   it('includes jshint-style details of failure', () => {
@@ -130,7 +130,7 @@ describe('grunt-jsonlint task', () => {
     runWithFiles(grunt, jsonlintSpy, [ 'test/invalid.json' ], {
       formatter: 'msbuild'
     });
-    expect(grunt.log.error).was.calledWith('test/invalid.json(3): error: failed JSON validation');
+    expect(grunt.log.error).was.calledWith('test/invalid.json(3,8): error: failed JSON validation');
   });
 
   // formatting of the JSON files.
@@ -160,35 +160,22 @@ function createPassingJsonlintSpy() {
 }
 
 function createFailingJsonlintSpy() {
-  /* eslint no-unused-vars: [ "off" ] */
-
-  const x = {
-    parse(data) {
-      const hash = {
-        text: '"3"',
-        token: 'STRING',
-        line: 3,
-        loc: {
-          first_line: 3,
-          last_line: 3,
-          first_column: 8,
-          last_column: 11
-        },
-        expected: [
-          "']'"
-        ]
+  return {
+    parse() {
+      const error = new SyntaxError('Parse error on line 1, column 3:\n{ 3...\n--^\nExpected "}" and instead saw "3"');
+      error.reason = 'Expected "}" and instead saw "3"';
+      error.exzerpt = '{ 3...';
+      error.pointer = '--^';
+      error.location = {
+        start: {
+          line: 3,
+          column: 8,
+          offset: 11
+        }
       };
-      this.yy.parseError('Invalid JSON', hash);
-      throw new Error('Invalid JSON');
-    },
-    parser: {
-      yy: {
-        parseError: function stub(msg, hash) { }
-      }
+      throw error;
     }
   };
-  x.parse = x.parse.bind(x.parser);
-  return x;
 }
 
 function createTaskContext(data) {
@@ -232,11 +219,11 @@ function expectSuccess(gruntSpy) {
   expect(gruntSpy.log.ok).was.calledWith('1 file lint free.');
 }
 
-function expectFailure(gruntSpy, file, atLine) {
+function expectFailure(gruntSpy, file, atLine, atColumn) {
   expect(gruntSpy.log.error).was.calledOnce();
   let message = `File "${file}" failed JSON validation`;
   if (atLine != null) {
-    message += ` at line ${atLine}`;
+    message += ` at line ${atLine}, column ${atColumn}`;
   }
   message += '.';
   expect(gruntSpy.log.error).was.calledWith(message);
