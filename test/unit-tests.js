@@ -2,6 +2,7 @@ const grunt = require('grunt');
 const jsonlint = require('@prantlf/jsonlint');
 const validator = require('@prantlf/jsonlint/lib/validator');
 const sorter = require('@prantlf/jsonlint/lib/sorter');
+const printer = require('@prantlf/jsonlint/lib/printer');
 const _ = require('lodash');
 
 let expect = require('expect.js');
@@ -219,10 +220,11 @@ function runWithFiles(gruntForTest, jsonlintForTest, files, options) {
     src: file
   }));
 
-  taskFactory(gruntForTest, jsonlintForTest, validator, sorter).bind(createTaskContext({
-    files: gruntFiles,
-    options
-  }))();
+  taskFactory(gruntForTest, jsonlintForTest, validator, sorter, printer)
+    .bind(createTaskContext({
+      files: gruntFiles,
+      options
+    }))();
 }
 
 function expectSuccess(gruntSpy) {
