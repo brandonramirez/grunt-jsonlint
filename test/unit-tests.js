@@ -176,7 +176,7 @@ function createFailingJsonlintSpy() {
     parse() {
       const error = new SyntaxError('Parse error on line 1, column 3:\n{ 3...\n--^\nExpected "}" and instead saw "3"');
       error.reason = 'Expected "}" and instead saw "3"';
-      error.exzerpt = '{ 3...';
+      error.excerpt = '{ 3...';
       error.pointer = '--^';
       error.location = {
         start: {
