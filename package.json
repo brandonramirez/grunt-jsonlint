@@ -7,8 +7,12 @@
     "test": "nyc grunt test",
     "fix-lint-errors": "eslint --fix tasks/ lib/ test/*.js"
   },
+  "files": [
+    "lib",
+    "tasks"
+  ],
   "engines": {
-    "node": ">=6.0"
+    "node": ">=6"
   },
   "repository": "https://github.com/brandonramirez/grunt-jsonlint",
   "bugs": "https://github.com/brandonramirez/grunt-jsonlint/issues",
