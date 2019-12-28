@@ -7,8 +7,12 @@
     "test": "nyc grunt test",
     "fix-lint-errors": "eslint --fix tasks/ lib/ test/*.js"
   },
+  "files": [
+    "lib",
+    "tasks"
+  ],
   "engines": {
-    "node": ">=6.0"
+    "node": ">=6"
   },
   "repository": "https://github.com/brandonramirez/grunt-jsonlint",
   "bugs": "https://github.com/brandonramirez/grunt-jsonlint/issues",
@@ -24,7 +28,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@prantlf/jsonlint": "6.2.1"
+    "@prantlf/jsonlint": "10.1.1"
   },
   "devDependencies": {
     "async": "^3.0.1",
@@ -34,9 +38,9 @@
     "expect.js": "^0.3.1",
     "fs-writefile-promise": "^3.0.2",
     "grunt": "~1.0.4",
-    "grunt-eslint": "^21.0.0",
+    "grunt-eslint": "^21.1.0",
     "grunt-mocha-test": "^0.13.3",
-    "lodash": "^4.17.11",
+    "lodash": "4.17.15",
     "mkdirp-promise": "^5.0.1",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
