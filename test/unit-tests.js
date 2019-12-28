@@ -161,6 +161,8 @@ describe('grunt-jsonlint task', () => {
   it('reformats the input JSON file with object keys sorted', testSortingObjectKeys);
 
   it('does not sort keys unless asked to do so', testNotSortingObjectKeys);
+
+  it('prettifies JSON5 input', testPrettyPrintingFile);
 });
 
 function createPassingJsonlintSpy() {
@@ -327,4 +329,29 @@ function testNotSortingObjectKeys() {
   expect(formatted).to.be(`${sourceJson}\n`);
 
   grunt.file.delete(`${__dirname}/dont-reformat-this.json`);
+}
+
+function testPrettyPrintingFile() {
+  const options = {
+    mode: 'json5',
+    prettyPrint: true,
+    indent: '',
+    pruneComments: true,
+    stripObjectKeys: true,
+    enforceDoubleQuotes: true,
+    trimTrailingCommas: true
+  };
+
+  grunt.file.write(`${__dirname}/reformat-this.json`, '/*json5*/{"key":\'value\',}');
+  runWithFiles(grunt, jsonlint, [ 'test/reformat-this.json' ], options);
+
+  const formatted = grunt.file.read(`${__dirname}/reformat-this.json`);
+  const lines = formatted.split(/\r?\n/);
+  expect(lines).to.have.length(4);
+  expect(lines[0]).to.be('{');
+  expect(lines[1]).to.be('key: "value"');
+  expect(lines[2]).to.be('}');
+  expect(lines[3]).to.be.empty();
+
+  grunt.file.delete(`${__dirname}/reformat-this.json`);
 }

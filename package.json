@@ -28,7 +28,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@prantlf/jsonlint": "10.1.1"
+    "@prantlf/jsonlint": "10.2.0"
   },
   "devDependencies": {
     "async": "^3.0.1",

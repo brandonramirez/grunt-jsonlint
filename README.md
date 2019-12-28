@@ -72,7 +72,10 @@ Add the following (multi-)task to your `Gruntfile`:
           indent: 2,
           sortKeys: false,
           pruneComments: false,
-          stripObjectKeys: false
+          stripObjectKeys: false,
+          enforceDoubleQuotes: false,
+          enforceSingleQuotes: false,
+          trimTrailingCommas: false
         }
       }
     }
@@ -83,6 +86,9 @@ Add the following (multi-)task to your `Gruntfile`:
 * `sortKeys`, when `true` keys of objects in the output JSON will be sorted alphabetically (`format` has to be set to `true`)
 * `pruneComments`, when `true` comments will be omitted from the prettified output (CJSON feature, `prettyPrint` has to be set to `true`)
 * `stripObjectKeys`, when `true` quotes surrounding object keys will be stripped if the key is a JavaScript identifier name (JSON5 feature, `prettyPrint` has to be set to `true`)
+* `enforceDoubleQuotes`, when `true` string literals will be consistently surrounded by double quotes (JSON5 feature, `prettyPrint` has to be set to `true`)
+* `enforceSingleQuotes`, when `true` string literals will be consistently surrounded by single quotes (JSON5 feature, `prettyPrint` has to be set to `true`)
+* `trimTrailingCommas`, when `true` trailing commas after all array items and object entries will be omitted (JSON5 feature, `prettyPrint` has to be set to `true`)
 
 # Schema Validation
 
