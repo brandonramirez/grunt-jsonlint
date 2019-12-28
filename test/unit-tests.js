@@ -195,10 +195,10 @@ function createTaskContext(data) {
   const target = 'unit test';
   const normalizedFiles = grunt.task.normalizeMultiTaskFiles(data, target);
 
-  const filesSrc = normalizedFiles.map(f => f.src).reduce((prev, curr) => prev.concat(curr), []);
+  const filesSrc = normalizedFiles.map((f) => f.src).reduce((prev, curr) => prev.concat(curr), []);
 
   const optionsFunc = (function optionsFunc(options) {
-    return defaultOptions => _.extend(defaultOptions, options);
+    return (defaultOptions) => _.extend(defaultOptions, options);
   }(data.options));
 
   return {
@@ -216,7 +216,7 @@ function createTaskContext(data) {
 }
 
 function runWithFiles(gruntForTest, jsonlintForTest, files, options) {
-  const gruntFiles = files.map(file => ({
+  const gruntFiles = files.map((file) => ({
     src: file
   }));
 
