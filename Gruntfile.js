@@ -54,6 +54,9 @@ module.exports = (grunt) => {
           mode: 'json5'
         }
       },
+      duplicateKeys: {
+        src: [ 'test/duplicate-keys.json' ]
+      },
       overflowTest: {
         src: [ 'test/issue13/**/*.json' ]
       },
@@ -93,8 +96,10 @@ module.exports = (grunt) => {
   require('./tasks/jsonlint')(grunt); // eslint-disable-line global-require
 
   grunt.registerTask('test', [
-    'eslint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments', 'jsonlint:singleQuotes',
-    'jsonlint:trailingCommas', 'jsonlint:json5', 'mochaTest'
+    'eslint',
+    'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments', 'jsonlint:singleQuotes',
+    'jsonlint:trailingCommas', 'jsonlint:json5', 'jsonlint:duplicateKeys',
+    'mochaTest'
   ]);
 
   // Default task(s).
