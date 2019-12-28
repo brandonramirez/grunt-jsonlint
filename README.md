@@ -66,13 +66,6 @@ Add the following (multi-)task to your `Gruntfile`:
       all: {
         src: [ 'some/valid.json' ],
         options: {
-          // parsing
-          mode: 'json',
-          ignoreComments: false,
-          ignoreTrailingCommas: false,
-          allowSingleQuotedStrings: false,
-          allowDuplicateObjectKeys: true,
-          // formatting
           format: true,
           prettyPrint: false,
           indent: 2,
@@ -83,32 +76,12 @@ Add the following (multi-)task to your `Gruntfile`:
       }
     }
 
-<<<<<<< HEAD
-* `format`, when true `JSON.stringify` will be used to format the JavaScript (if it is valid)
-||||||| parent of a4f9fb6... feat: Add support for pretty-printing of CJSON and JSON5 formats
-
-* `format`, when `true` `JSON.stringify` will be used to format the JavaScript (if it is valid)
-=======
-
-* `mode`, when set to "cjson" or "json5", enables some other flags automatically
-* `ignoreComments`, when `true` JavaScript-style single-line and multiple-line comments will be recognised and ignored
-* `ignoreTrailingCommas`, when `true` trailing commas in objects and arrays will be ignored
-* `allowSingleQuotedStrings`, when `true` single quotes will be accepted as alternative delimiters for strings
-* `allowDuplicateObjectKeys`, when `false` duplicate keys in objects will be reported as an error
-
 * `format`, when `true` `JSON.stringify` will be used to format the JavaScript (if it is valid)
 * `prettyPrint`, when `true` `JSON.stringify` will be used to format the JavaScript (if it is valid)
->>>>>>> a4f9fb6... feat: Add support for pretty-printing of CJSON and JSON5 formats
 * `indent`, the value passed to `JSON.stringify`, it can be the number of spaces, or string like "\t"
-<<<<<<< HEAD
-* `sortKeys`, when true, keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
-||||||| parent of a4f9fb6... feat: Add support for pretty-printing of CJSON and JSON5 formats
-* `sortKeys`, when `true` keys of objects in the output JSON will be sorted alphabetically (`format` has to be set to `true` too)
-=======
 * `sortKeys`, when `true` keys of objects in the output JSON will be sorted alphabetically (`format` has to be set to `true`)
 * `pruneComments`, when `true` comments will be omitted from the prettified output (CJSON feature, `prettyPrint` has to be set to `true`)
 * `stripObjectKeys`, when `true` quotes surrounding object keys will be stripped if the key is a JavaScript identifier name (JSON5 feature, `prettyPrint` has to be set to `true`)
->>>>>>> a4f9fb6... feat: Add support for pretty-printing of CJSON and JSON5 formats
 
 # Schema Validation
 
