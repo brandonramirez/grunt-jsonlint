@@ -192,6 +192,7 @@ Which does the same thing.
 * 2016-05-27   v1.0.8	Option to format JSON file thanks to @robblue2x
 * 2016-06-11   v1.1.0	Enhanced error reporting for better human reading and Visual Studio integration.
 * 2019-06-14   v2.0.0	Schema validation, sorting keys, single quotes thanks to @prantlf, dependency upgrades, drop support for node 4.x.
+* 2020-01-01   v2.1.0 Implement `ignoreTrailingCommas`, `allowDuplicateObjectKeys`, `enforceDoubleQuotes`, `enforceSingleQuotes`, and `trimTrailingCommas` options, dependency upgrades, improved error reporting.
 
 [JSON]: https://tools.ietf.org/html/rfc8259
 [JSON5]: https://spec.json5.org
