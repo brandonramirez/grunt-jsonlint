@@ -1,6 +1,6 @@
 {
   "name": "grunt-jsonlint",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Validate JSON files from grunt.",
   "main": "tasks/jsonlint.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "@prantlf/jsonlint": "10.2.0"
   },
   "devDependencies": {
-    "async": "^3.0.1",
+    "async": "^3.1.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3",
