@@ -1,6 +1,6 @@
 {
   "name": "grunt-jsonlint",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "description": "Validate JSON files from grunt.",
   "main": "tasks/jsonlint.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "LICENSE-MIT"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "repository": "https://github.com/brandonramirez/grunt-jsonlint",
   "bugs": "https://github.com/brandonramirez/grunt-jsonlint/issues",
