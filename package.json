@@ -44,7 +44,7 @@
     "lodash": "4.17.19",
     "mkdirp-promise": "^5.0.1",
     "mocha": "^7.2.0",
-    "nyc": "^15.0.0",
+    "nyc": "^15.1.0",
     "promise": "^8.1.0",
     "sinon": "^9.0.2",
     "sinon-expect": "^0.3.0"
