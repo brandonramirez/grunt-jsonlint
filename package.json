@@ -41,7 +41,7 @@
     "grunt": "~1.0.4",
     "grunt-eslint": "^21.1.0",
     "grunt-mocha-test": "^0.13.3",
-    "lodash": "4.17.15",
+    "lodash": "^4.17.19",
     "mkdirp-promise": "^5.0.1",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",
