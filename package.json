@@ -43,7 +43,7 @@
     "grunt-mocha-test": "^0.13.3",
     "lodash": "^4.17.19",
     "mkdirp-promise": "^5.0.1",
-    "mocha": "^6.2.2",
+    "mocha": "^6.2.3",
     "nyc": "^14.1.1",
     "promise": "^8.1.0",
     "sinon": "^8.1.1",
