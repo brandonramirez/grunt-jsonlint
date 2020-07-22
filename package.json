@@ -13,7 +13,7 @@
     "LICENSE-MIT"
   ],
   "engines": {
-    "node": ">=8"
+    "node": ">=10.12"
   },
   "repository": "https://github.com/brandonramirez/grunt-jsonlint",
   "bugs": "https://github.com/brandonramirez/grunt-jsonlint/issues",
