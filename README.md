@@ -196,6 +196,7 @@ Which does the same thing.
 * 2020-01-01   v2.1.1 Include license file in published npm package.
 * 2020-03-15   v2.1.2 Update external dependency for security.
 * 2020-07-22   v2.1.3 Update external dependency for security.
+* 2022-12-04   v2.1.4 Update external dependency for security.
 
 [JSON]: https://tools.ietf.org/html/rfc8259
 [JSON5]: https://spec.json5.org
