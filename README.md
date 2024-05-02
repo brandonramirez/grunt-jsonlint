@@ -3,7 +3,7 @@ grunt-jsonlint [![Build Status](https://travis-ci.org/brandonramirez/grunt-jsonl
 
 Validate [JSON]/[JSON5] files from [Grunt].
 
-Requires Grunt 1.0+ and node 10.12+.
+Requires Grunt 1.6+ and node 18+.
 
 # Install
 
