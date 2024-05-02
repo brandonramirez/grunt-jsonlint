@@ -13,6 +13,9 @@ const printer = require('@prantlf/jsonlint/lib/printer');
 const gruntJsonLintTask = require('../lib/grunt-jsonlint-task');
 
 module.exports = (grunt) => {
-  grunt.registerMultiTask('jsonlint', 'Validate JSON files.',
-    gruntJsonLintTask(grunt, jsonlint, validator, sorter, printer));
+  grunt.registerMultiTask(
+    'jsonlint',
+    'Validate JSON files.',
+    gruntJsonLintTask(grunt, jsonlint, validator, sorter, printer)
+  );
 };
