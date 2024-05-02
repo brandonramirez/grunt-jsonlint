@@ -32,21 +32,21 @@
     "@prantlf/jsonlint": "11.7.0"
   },
   "devDependencies": {
-    "async": "^3.2.0",
-    "eslint": "^7.25.0",
+    "async": "^3.2.5",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.29.1",
     "expect.js": "^0.3.1",
     "fs-writefile-promise": "^3.0.2",
-    "grunt": "^1.4.0",
+    "grunt": "^1.6.1",
     "grunt-eslint": "^23.0.0",
     "grunt-mocha-test": "^0.13.3",
     "lodash": "^4.17.21",
     "mkdirp-promise": "^5.0.1",
-    "mocha": "^10.1.0",
+    "mocha": "^10.4.0",
     "nyc": "^15.1.0",
-    "promise": "^8.1.0",
-    "sinon": "^10.0.0",
+    "promise": "^8.3.0",
+    "sinon": "^10.0.1",
     "sinon-expect": "^0.3.0"
   }
 }
