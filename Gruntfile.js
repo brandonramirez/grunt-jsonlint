@@ -93,7 +93,7 @@ module.exports = (grunt) => {
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-mocha-test');
 
-  require('./tasks/jsonlint')(grunt); // eslint-disable-line global-require
+  require('./tasks/jsonlint')(grunt);
 
   grunt.registerTask('test', [
     'eslint',

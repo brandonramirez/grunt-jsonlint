@@ -1,24 +1,25 @@
-{
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true,
-        "node": true,
-        "mocha": true
+const airbnbBase = require('eslint-config-airbnb-base');
+
+module.exports = [
+  {
+    plugins: {
+      airbnbBase
     },
-    "extends": "airbnb-base",
-    "globals": {
+    languageOptions: {
+      globals: {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
+      },
+      parserOptions: {
         "ecmaVersion": 2018
+      }
     },
-    "rules": {
+    rules: {
         "comma-dangle": [ "error", "never" ],
         "array-bracket-spacing": [ "error", "always" ],
         "brace-style": [ "error", "stroustrup" ],
         "no-plusplus": [ "off" ],
         "no-use-before-define": [ "off" ]
     }
-}
+  }
+];
