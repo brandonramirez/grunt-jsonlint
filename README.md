@@ -92,7 +92,7 @@ Add the following (multi-)task to your `Gruntfile`:
 
 # Schema Validation
 
-You can validate JSON files using [JSON Schema] drafts 04, 06 or 07:
+You can validate JSON files using [JSON Schema] drafts 06 or 07:
 
     jsonlint: {
       all: {
@@ -100,7 +100,7 @@ You can validate JSON files using [JSON Schema] drafts 04, 06 or 07:
         options: {
           schema: {
             src: 'some/manifest-schema.json',
-            environment: 'json-schema-draft-04'
+            environment: 'json-schema-draft-07'
           }
         }
       }
