@@ -61,7 +61,7 @@ describe('grunt-jsonlint task', () => {
     runWithFiles(grunt, jsonlint, [ 'test/valid.json' ], {
       schema: { src: 'test/3.schema.json' }
     });
-    expectFailure(grunt, 'test/valid.json', 1, 1);
+    expectFailure(grunt, 'test/valid.json');
   });
 
   it('passes a JSON file with duplicate object keys', () => {
