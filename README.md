@@ -1,4 +1,4 @@
-grunt-jsonlint
+grunt-jsonlint [![Node.js CI](https://github.com/brandonramirez/grunt-jsonlint/actions/workflows/node.js.yml/badge.svg)](https://github.com/brandonramirez/grunt-jsonlint/actions/workflows/node.js.yml)
 ==============
 
 Validate [JSON]/[JSON5] files from [Grunt].
@@ -196,6 +196,8 @@ Which does the same thing.
 * 2020-01-01   v2.1.1 Include license file in published npm package.
 * 2020-03-15   v2.1.2 Update external dependency for security.
 * 2020-07-22   v2.1.3 Update external dependency for security.
+* 2024-05-02   v2.1.4 Update dependencies.
+* 2024-05-02   v2.1.5 Lock grunt dependency to 1.5.3 to preserve support for older node versions.
 
 [JSON]: https://tools.ietf.org/html/rfc8259
 [JSON5]: https://spec.json5.org
