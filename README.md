@@ -198,6 +198,7 @@ Which does the same thing.
 * 2020-07-22   v2.1.3 Update external dependency for security.
 * 2024-05-02   v2.1.4 Update dependencies.
 * 2024-05-02   v2.1.5 Lock grunt dependency to 1.5.3 to preserve support for older node versions.
+* 2024-05-02   v3.0.0 Update all dependencies, including major version updates. Dropped support for node.js < 18. We now require node 18+ and Grunt 1.6+.
 
 [JSON]: https://tools.ietf.org/html/rfc8259
 [JSON5]: https://spec.json5.org
