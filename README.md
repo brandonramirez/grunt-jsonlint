@@ -1,4 +1,4 @@
-grunt-jsonlint [![Build Status](https://travis-ci.org/brandonramirez/grunt-jsonlint.svg)](https://travis-ci.org/brandonramirez/grunt-jsonlint)
+grunt-jsonlint [![Node.js CI](https://github.com/brandonramirez/grunt-jsonlint/actions/workflows/node.js.yml/badge.svg)](https://github.com/brandonramirez/grunt-jsonlint/actions/workflows/node.js.yml)
 ==============
 
 Validate [JSON]/[JSON5] files from [Grunt].
